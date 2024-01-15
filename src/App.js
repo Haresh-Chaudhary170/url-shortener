@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+import StaticPage from "./Pages/StaticPage/StaticPage";
+import Navbar from "./Components/Navbar";
+import UrlShorterner from "./Pages/UrlShortener/UrlShorterner";
 
-function App() {
+const App = () => {
+ 
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+        <Navbar />
+      <div className="mx-auto max-w-[70%] ">
+        <Routes>
+        <Route
+            path="/"
+            element={<StaticPage />}
+          ></Route>
+          <Route
+            path="/url-shortener"
+            element={<UrlShorterner />}
+          ></Route>
+        </Routes>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
